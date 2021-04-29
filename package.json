@@ -1,0 +1,29 @@
+{
+  "name": "anomalywebapp",
+  "version": "1.0.0",
+  "description": "AnomalyWebApp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sierraromeo1993/AnomalyWebApp.git"
+  },
+  "author": "Ian Sanders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sierraromeo1993/AnomalyWebApp/issues"
+  },
+  "homepage": "https://github.com/sierraromeo1993/AnomalyWebApp#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
