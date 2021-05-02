@@ -4,6 +4,7 @@
   "description": "AnomalyWebApp",
   "main": "server.js",
   "scripts": {
+    "client-install" : "cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
@@ -22,6 +23,7 @@
   "dependencies": {
     "concurrently": "^6.0.2",
     "express": "^4.17.1",
+    "react": "^17.0.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
