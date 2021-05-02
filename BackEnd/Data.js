@@ -8,6 +8,7 @@ class Data{
 
     constructor(){
         this.id =  uuidv4();
+        //King Dvir
     }
 }
 
