@@ -12,7 +12,7 @@ class Data{
 }
 
 
-
+var a  =5;
 module.exports.Data = Data;
 
 //try someting
