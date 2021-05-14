@@ -8,11 +8,7 @@ import {useState} from 'react';
 
 
 
-const  AddModel = ({addModel}) => {
-
-    const [value, setValue] = useState('');
-
-    
+const  AddModel = ({addModel,showAD}) => {
 
     const [modelName,setModelName] = useState('');
     const [modelType,setModelType] = useState('');
@@ -36,11 +32,11 @@ const  AddModel = ({addModel}) => {
             alert('Invalid Model Type.Current Models in System : Linear , NonLinear')
             return;
         }
-        //{id:4,Name:"J",is_Ready:false,type:"NonLinear"}
         const ID = Math.floor(Math.random()*100000)+1;
         addModel({id:ID,Name:modelName,is_Ready:false,type:modelType})
         setModelName('');
         setModelType('');
+        showAD(false);
     }
 
     return (

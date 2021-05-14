@@ -5,6 +5,9 @@ import NameInput from './AddModel'
 import {useState, useEffect} from 'react'
 import Button from './Button'
 import AddModel from './AddModel';
+import Dropdown from './Dropdown';
+
+
 
 
 
@@ -17,7 +20,7 @@ import AddModel from './AddModel';
 // receive as prop; models , any functions dealing with actions associated with 
 // APP LEVEL OPERATION ( ADDMODEL, ADDFILETOSTATE )
 
-function SubMaster({models,addModel,addFile}) {
+function SubMaster({models,addModel,addFile,testModel}) {
 
 
     
@@ -27,28 +30,32 @@ function SubMaster({models,addModel,addFile}) {
     const [showTestDisplay,setShowTestDisplay] = useState(false);
 
     const [showAddModel, setShowAddModel] =  useState(false);
+     
+    const [showButtons, setShowButtons] = useState(false);
+    
 
 
-    const setActiveButton = (string) => {
-        setButton(string);
-    }
-    // useful if a number of actions need to happen immediatley after a change 
-    // in state before a render 
+    const setActiveButton = (string) => {setButton(string);console.log(string) }
+     
+
+    const showTD = (flag) => {setShowTestDisplay(flag)}
+    const showAD = (flag) => {setShowAddModel(flag)}
+    const showB  =  (flag) => {setShowButtons(flag)}
+
     useEffect(() => {
-       //console.log(activeButton);
+       if(activeButton === "Train"){showAD(true);showB(false)}
+       if(activeButton === "Test"){showTD(true);showB(false)}
     }, [activeButton]);
 
 
           
     return (
         <div>
-          <AddModel addModel = {addModel}/>
-
-          <Button text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>
-          <Button text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>
-          <FileDrop activeButton = {activeButton} addFile={addFile} />
-          {showTestDisplay && <TestDisplay models = {models} />}
-          
+          {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
+          {showButtons &&<Button text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
+          {showButtons &&<Button text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
+          {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD}  />}
+          <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} />   
         </div>
     );
 }

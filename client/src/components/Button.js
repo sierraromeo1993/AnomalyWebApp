@@ -9,13 +9,10 @@ import React from 'react';
 const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton}) => {
     // create object 
     const onClick = (e) => {
-        //onAdd();
-        //onDelete();
-        //console.log(type);
+        console.log(type);   
         setActiveButton(type);
         
-        // The result will be pushed into the useState of a 
-        // a given type so we can save him : note  you'll have to update accordingly
+       
 
         //onGet().then(result=>  {console.log(result)});
         

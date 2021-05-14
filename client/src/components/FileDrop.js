@@ -20,7 +20,7 @@ import TestDisplay from './TestDisplay'
     //      ie submit in AdModal is clicked then inside of Onsubmit
     //      do the following :         
     //      activate addModal function in Appsate which inside of it 
-    //      also activate addFile which look to state of current
+    //      also activate addFile which look to state of current. Done 
     //
     // 2 : IF TEST then send files accpeted up to APP  through the function
     //     we stated before and send true for second flag which is USEstate attribute
@@ -29,16 +29,12 @@ import TestDisplay from './TestDisplay'
     //     which still needs to be created in APP 
 
 
-function FileDrop({activeButton,addFile}) {
+function FileDrop({addFile,showB}) {
 
-    const handleOnDrop = (acceptedFiles) => {
-        //console.log(acceptedFiles);
-        addFile(acceptedFiles)
-
-    //
-    
+    const handleOnDrop = (acceptedFiles) => {     
+        addFile(acceptedFiles);
+        showB(true);
     }
-
 
     return (
         <div>

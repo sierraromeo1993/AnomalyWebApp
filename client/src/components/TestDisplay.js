@@ -7,11 +7,11 @@ import ClickModel from './clickModel';
 //  which holds model and allows us to add functionality 
 // for given model creeat OnClick function inside of value 
 
-const TestDisplay = ({models}) => {
+const TestDisplay = ({models,testModel,showTD}) => {
     return (
         <div className ="TestModelContainer" >
             {models.map((model,index)=>
-            <ClickModel key={index} model= {model} />)}                                                  
+            <ClickModel key={index} model= {model} testModel={testModel} showTD ={showTD}/>)}                                                  
         </div>
     );
     
