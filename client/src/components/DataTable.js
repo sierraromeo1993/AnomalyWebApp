@@ -94,11 +94,10 @@ const DataTable = ({dataColumns}) => {
             dataTableArr.push(createDataTableObj(element,TimeStepArr))
 
         })
-       
         setDataTableObjects(dataTableArr);
     },[dataARRColumns])
 
-
+///
     useEffect( () => {
         if(Object.keys(dataColumns).length === 0){return;}  
         readyData(dataColumns);

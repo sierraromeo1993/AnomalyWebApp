@@ -19,8 +19,9 @@ import Dropdown from './Dropdown';
 //    to be drilled inside for APP STATE/ SUBMaster can talk with him  
 // receive as prop; models , any functions dealing with actions associated with 
 // APP LEVEL OPERATION ( ADDMODEL, ADDFILETOSTATE )
+//activateAnomalies ={activateAnomalies}
 
-function SubMaster({models,addModel,addFile,testModel}) {
+function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
 
 
     
@@ -54,7 +55,7 @@ function SubMaster({models,addModel,addFile,testModel}) {
           {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
           {showButtons &&<Button text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
           {showButtons &&<Button text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
-          {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD}  />}
+          {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD} activateAnomalies ={activateAnomalies}  />}
           <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} />   
         </div>
     );

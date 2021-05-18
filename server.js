@@ -1,8 +1,9 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const { v4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
+var simpleAD = require("./simpleAnomalyDetector");
+
 
 
 const MasterBackend =  require('./BackEnd/MasterBackend');
@@ -16,13 +17,13 @@ var models = [{id:4,Name:"J",is_Ready:false,type:"NonLinear"},
                 {id:5,Name:"Jake",is_Ready:false,type:"Linear"}]
 
 
-app.get('/api/customers',(req,res)=>{
+//app.get('/api/customers',(req,res)=>{
 
 
-    console.log(MasterBackend);
-    var mt = new MasterBackend.MasterBackend();
+    //console.log(MasterBackend);
+    //var mt = new MasterBackend.MasterBackend();
 
-});
+//});
 
 
 app.get('/api/models',(req,res) =>{
@@ -30,9 +31,11 @@ app.get('/api/models',(req,res) =>{
     res.json(models)
 })
 
-
-app.post('/api/models/add',(req,res) => {
-   
+// add for train
+app.post('/api/models/add',(req,res) => { 
+    
+    var CF  =  simpleAD.learnNormal(req.body.train_data);
+    req.body.cf = CF;
     models.push(req.body);
     
 
@@ -92,8 +95,21 @@ const purgeUploadsFolder = () => {
     });
 }
 
+
+
+
+
+// Add for test 
 app.post('/api/models/update',(req,res)=>{
-    console.log(req.body.predict_data['All Cause'])
+    console.log(req.body)
+    models.forEach(model => {if(model.id == req.body.id){
+        var ar  =  simpleAD.detect(req.body.predict_data,model.cf,"Linear");
+        res.json(ar);
+    }});
+
+
+
+
 })
 
 app.listen(port,()=> console.log(`server started on port ${port}`))

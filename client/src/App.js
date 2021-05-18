@@ -1,14 +1,12 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Models from './components/Models'
 import {useState,useEffect} from 'react'
-import Button from './components/Button'
-import FileDrop from './components/FileDrop'
 import SubMaster from './components/SubMaster'
 import {parse} from "papaparse"
 import Dropdown from './components/Dropdown'
-import DynamicChart from './components/DynamicChart';
+import DynamicChart from './components/DynamicChart'
 import DataTable from './components/DataTable'
+import Anomalies from  './components/Anomalies'
 
 
 
@@ -27,14 +25,17 @@ function App() {
 
   const [displayGraphData,setDisplayGraphData] = useState([])
 
+  const [anomalyReports,setAnomalyReports] = useState([]);
+
+  const [showAnomalies,setShowAnomalies] = useState(false);
+
   
 
 
-  // This will be sent in to SubMaster which will then send into 
-  // NameInput
+
  
     
-  // To Initalize all Data from BACKEND  
+  /* To Initalize all Data from BACKEND */ 
   useEffect( () => {
   const getModels = async () => {
     const modelsFromServer = await fetchModels();
@@ -42,33 +43,32 @@ function App() {
   }
   getModels();},[]);
 
-  useEffect( () => {
-    console.log(models);
-      },[models]);
 
+
+   /* To Initalize anomalyReports in useState */ 
   useEffect( () => {
-    console.log(dataPoints);
+    if(anomalyReports.length === 0){return}
+    setShowAnomalies(true);
+  },[anomalyReports])
+
+   /* To initalize Data we received from file from user and parse into proper format*/ 
+  useEffect( () => {
+  
     parseByColumn(dataPoints);
     },[dataPoints]);
 
-  useEffect( () => {
-  
-    console.log(dataColumns)
-    },[dataColumns]);
 
-    
-   
-    
-    
+  /* To set for specific attribute to be displayed on graph as function of all other 
+     datasets we parsed from file given from user */   
+
   const addGraphData = (graphData) => {
       setDisplayGraphData(graphData)
   }
   
-  // do foreach when objectNotation, have be empty object 
-  // for every value I pass add new entry into object 
-  // where key is what you passed value is array;
-  // no have new object run foreach again 
-  // 
+ 
+
+   /* take datapoints which is object which contains key pair value where key 
+      is data cloumn attribute and value is ij value in grid */ 
   const parseByColumn = (dataPoints) => {
 
     var dataColumnArray = []; 
@@ -84,18 +84,21 @@ function App() {
     });
     setDataColumns(obj);
   }
-              
+
+   /* async function which return promise and gives me all models existing in the Backend */ 
+
   const fetchModels = async () => {
     
     const res = await fetch('/api/models');
     const data = await res.json();
     return data;
   }
- 
+
+   /* Add Model to the App  */ 
+
   const addModel =  (model) => {
 
     model.train_data = dataColumns;
-    console.log(model);
     const options = {
       method :'POST',
       headers: {
@@ -104,30 +107,30 @@ function App() {
       }
       fetch('/api/models/add',options)
       setModels([...models,model]);
-      //sendFile();
-
       
     }   
     
     
 
-
-  // deletes front-end representation of model 
+  /* deletes front-end representation of Model, goes by ID */ 
   const delModel = (id) => {
 
-                                      // SHOULD BE ID
-    setModels(models.filter((model)=> model.id !== 4));
+                                      
+    setModels(models.filter((model)=> model.id !== id));
     delBack();
    
   }
-  // deletes backend representation of model  
+
+   /* Deletes backend representation Model, goes by ID */ 
   const delBack = async (id) => {
-    await fetch(`/api/models/delete/${5}`,{
+    await fetch(`/api/models/delete/${id}`,{
       method: 'DELETE'
     });
   }
 
-  // GETS MODEL BASED ON ID , RETURNS A PROMISE WHICH NEEDS TO BE UNRAVELED
+
+   /* Gets Model from Backend returns promise which can picked up by function and 
+      unraveled */ 
   const getModel = async (id) => {
     const res = await fetch(`/api/models/${4}`);
     const data = await res.json();
@@ -135,22 +138,22 @@ function App() {
   }
 
 
-  // NEEDS TO BE CHANGED, BUT SENDS FILE TO BACKEND TO BE USED IN CREATING 
-  // MODEL, NOTE : YOU MUST ENSURE THAT THERI IS ONLY ONE FILE 
-  // IN DATAMASTER AT ALL TIMES IN BACKEND
-  // 
-  //const sendFile = () => {
+ 
+   /* Function which sends a file to the Backend as FormData */ 
+  const sendFile = () => {
 
-    //const formData = new FormData()
-    //formData.append('myFile', file[0])
-    //console.log(file[0]);
-    //const options = {
-      //method :'POST',
-      //body: formData   
-      //}
-      //fetch('/api/file/add',options) 
-    //}
+    const formData = new FormData()
+    formData.append('myFile', file[0])
+    console.log(file[0]);
+    const options = {
+      method :'POST',
+      body: formData   
+      }
+      fetch('/api/file/add',options) 
+    }
 
+
+   /* Adds file to the app and does first structureing of the data */   
   const addFile = (file) => {
     setFile(file)
     const reader = new FileReader()
@@ -163,17 +166,14 @@ function App() {
   }
   
 
-  // MAY NOT EVEN USE 
+  /* To implement ; deletes file in the Backend */ 
   const delFile = (file) => {
 
 
   }
 
-
-  const checkActiveModels = () => {
-
-  }
-
+   /* To Implement; checks whether in the Backend the model is ready and if so will update 
+      the FrontEnd state accordingly  */ 
   const checkActiveModel = async (model) => {
     const res =  await fetch(`/api/models/status/${model.id}`);
     const data = await res.json();
@@ -182,8 +182,8 @@ function App() {
   }
 
   
-
-  const testModel = (model) => {
+   /* To take care of test when user gives test data fro a given model */ 
+  const testModel = async (model) => {
     model.predict_data = dataColumns;
     const options = {
       method :'POST',
@@ -191,20 +191,28 @@ function App() {
           'Content-Type': 'application/json'},
       body: JSON.stringify(model)    
       }
-      fetch('/api/models/update',options)
-      //sendFile();
+      const res =  await fetch('/api/models/update',options);
+      const data = await res.json();
+      return data
+       /* Here you would have used sendFile()  to send this file to the Backend*/ 
+      /*sendFile()*/
   }
-// SubMaster is completed 
-//<Models models={models}/> is completed 
-// Dynamic Charting 
-// show general data 
 
+
+   /* sets all Anomaly reports we got from App */ 
+  const activateAnomalies = (anomalyArr) => {
+    setAnomalyReports(anomalyArr);
+  }
+
+
+ /* General components for APP */ 
   return (
     <div className="App">
       <Dropdown dataColumns={dataColumns} addGraphData={addGraphData}/>
       <DynamicChart displayGraphData = {displayGraphData}/>   
       <DataTable dataColumns= {dataColumns}/>
-      <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel}/>
+      <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel} activateAnomalies ={activateAnomalies}/>
+      {showAnomalies && <Anomalies anomalyReports = {anomalyReports}/>}
     </div>
   );
 }
