@@ -21,7 +21,13 @@
   "homepage": "https://github.com/sierraromeo1993/AnomalyWebApp#readme",
   "dependencies": {
     "concurrently": "^6.0.2",
+    "csv-parser": "^3.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "react-dropzone": "^11.3.2",
+    "simple-statistics": "^7.7.0",
+    "smallest-enclosing-circle": "^1.0.2",
+    "statistics.js": "^1.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
