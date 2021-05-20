@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
 import Button from   './Button'
 import TestDisplay from './TestDisplay'
+import './FDD.css';
 
 
 
@@ -37,8 +38,8 @@ function FileDrop({addFile,showB}) {
     }
 
     return (
-        <div>
-            <Dropzone onDrop={acceptedFiles => handleOnDrop(acceptedFiles)}>
+        <div className = "FileDropContainer">
+            <Dropzone className= "FileDrop" onDrop={acceptedFiles => handleOnDrop(acceptedFiles)}>
                 {({getRootProps, getInputProps}) => (
                     <section>
                     <div {...getRootProps()}>

@@ -203,6 +203,7 @@ function App() {
   const activateAnomalies = (anomalyArr) => {
     setAnomalyReports(anomalyArr);
   }
+  
 
 
  /* General components for APP */ 

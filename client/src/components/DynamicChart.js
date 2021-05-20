@@ -69,6 +69,7 @@ const  DynamicChart = ({displayGraphData}) => {
       
 
     return (
+      <div className="GraphContainer">
         <ScatterChart
         width={800}
         height={400}
@@ -84,6 +85,7 @@ const  DynamicChart = ({displayGraphData}) => {
          <Scatter  name="Speed" data={dataToShow(displayGraphData[1])} fill="purple" line shape="circle" />
          <Scatter  name="Altitute" data={dataToShow(displayGraphData[2])} fill="orange" line shape="circle" />
       </ScatterChart>
+    </div>
         
     );
 }

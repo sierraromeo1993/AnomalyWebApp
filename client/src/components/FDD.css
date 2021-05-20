@@ -1,0 +1,48 @@
+
+
+
+.FileDropContainer{
+    border: 3px #414242 solid;
+    position: absolute;
+    left: 70px;
+    top:110%;
+    width: 500px;
+    height: 50px;
+    cursor:pointer;
+    font-size: 20px;
+    font-family:  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  
+}
+
+.FileDropContainer:hover {
+    background-color: whitesmoke;
+  }
+
+
+
+.GraphContainer{
+
+    width:800px;
+    height:400px;
+
+}
+
+
+
+.DataTable{
+    margin-top: auto;
+    position: relative;
+    
+    left: 70px;
+ 
+   
+
+}
+
+
+
+
+
+
+
