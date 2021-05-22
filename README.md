@@ -1,6 +1,7 @@
-Project name: FlightGearExplorer
+Project name: AnomalyWebApp
 
-Description: A dekstop application which allows the user to research and understand a given flight done by a given aircraft in this     case a Cessna 172. 
+Description: A Web App use which allows it's users to upload given data-sets as either train data or test data and use them on different 
+             regression models and explore these results visually 
 
 
 Table of Contents: 
@@ -17,11 +18,10 @@ Table of Contents:
 
 5: CREDITS
 
-INSTALLATION REQUIRMENTS : OS, Windows 10 . PREFERED IDE OPTION,  VISUAL STUDIO 2019 . FRAMEWORK , .NET FRAMEWORK 4.5 .
-                           C++ 14 AND ABOVE. PACKAGE MANAGER , NUGET. FLIGHTGEAR VERSION 2020.3.8
-
-DEPENDENCIES REQUIREMENTS  : CSVHELPER , EXTREME.NUMERICS , MATH.NET.NUMERICS , OXYPLOT . 
+INSTALLATION REQUIRMENTS : OS : Windows 10 . PREFERED IDE OPTION : VS CODE, Node (latest stable version), 
+                           NPM (if for some reason not installed with Node)
 
 
-FIRST USE : ONCE ALL INSTALLATION AND DEPENDENCIES REQUIREMENTS ARE MET  AND YOU ARE IN THE IDE WINDOW. MAKE SURE YOU ARE RUNNING THE  CURRENT APPLICATION BASED ON THE C# PROJECT. SEE VIDEO EXPLANATION ATTACHED 
+
+FIRST USE : ONCE ALL INSTALLATION AND DEPENDENCIES REQUIREMENTS ARE MET  AND YOU ARE IN THE IDE WINDOW. SEE VIDEO EXPLANATION ATTACHED 
 
