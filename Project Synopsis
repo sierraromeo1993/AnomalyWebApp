@@ -1,12 +1,17 @@
-Project Synopsis/File Structure/ Implementation of Main Files
+Project Synopsis & Features/File Structure/ Implementation of Main Files (Backend/Client)
 
 
-PROJECT SYNOPSIS : In our project the user can see a simulation of a flight in a Cessna 172 rotor plane and see active data attributes of the given flight whether through current position of Joystick Rudder, Throttle . General Data sets of Height, Speed, Yaw, current Direction, Roll, and Pitch of plane while in flight. We also allow our user to see and understand different correlation and regression factors between different data attributes during the flight.
+PROJECT SYNOPSIS & Features : A Web application which allows user to upload and data-sets whether as train or test 
+                              data and either build mathematical based on this data or test current mathematical models 
+                              currentlly stored in the Web app. We also display through a Data Table and Graphs all data loaded so user 
+                              can visualize it in a better manner.
+                              
+ 
 
 File Structure :
                   
-            bin                |Debug,Release
-            helpers            |Client,FileParser, InfoServer 
+            client             |src
+            node-modules       |Client,FileParser, InfoServer 
             Images             |
             Interfaces         |IClient,IPanelModel,IServer
             Models             |GraphModel, PanelModel
@@ -15,7 +20,7 @@ File Structure :
             Views              |GraphWindow, PanelView, GraphView, MainWindow 
 
 
-Implementation of Main Files :
+Implementation of Main Files (Backend/Client) :
                               
                               InfoServer : A class which takes care of accessing and handling data from FlightGear API
                               
