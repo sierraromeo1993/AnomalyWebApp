@@ -1,4 +1,4 @@
-Project Synopsis & Features/File Structure/ Implementation of Main Files (Backend/Client)
+Project Synopsis & Features/File Structure/ Implementation of Main Files (Backend/client|src|App.js,components)
 
 
 PROJECT SYNOPSIS & Features : A Web application which allows user to upload and data-sets whether as train or test 
@@ -10,38 +10,74 @@ PROJECT SYNOPSIS & Features : A Web application which allows user to upload and 
 
 File Structure :
                   
-            client             |src
-            node-modules       |Client,FileParser, InfoServer 
-            Images             |
-            Interfaces         |IClient,IPanelModel,IServer
-            Models             |GraphModel, PanelModel
-            Obj                | 
-            ViewModels         |PanelViewModel, MasterViewModel, GraphManager,GraphViewModel
-            Views              |GraphWindow, PanelView, GraphView, MainWindow 
+            client                    |src|App.js,components, node_modules,public,package-lock.json,package.json,README.md    
+            node-modules              |
+            anomalyDetectionUtil.js   |anomalyDetectionUtil.js
+            AnomalyDetector.js        |AnomalyDetector.js
+            Data.js                   |Data.js 
+            DataMaster.js             |DataMaster.js
+            package-lock.json         |package-lock.json
+            package.json              |package.json
+            server.js                 |server.js
+            simpleAnomalyDetector.js  |simpleAnomalyDetector.js
+                                  
 
 
-Implementation of Main Files (Backend/Client) :
+Implementation of Main Files (Backend/client|src|App.js,components) :
                               
-                              InfoServer : A class which takes care of accessing and handling data from FlightGear API
+                             Backend| server.js               : Runs and controls all of our routes (POST GET , requests) for the entire app
                               
-                              FileParser : A function which takes a CSV file and parses it to be used in the 
-                                          Application 
+                             Backend| simpleAnomalyDetector.js: The Businness Logic of our regression models onto which we train/test 
+                                                                given data sets 
                              
-                              PanelModel : The Business Logic of the Panel implementation  and and all "first" layer 
-                                           components of the application
+                             Backend| Data.js                 : A class to store data 
                              
-                              GraphModel : The Business Logic of the Graph implementation and and all "second" layer 
-                                           components of the application
-
-                              PanelViewModel : The ViewModel of Panel implementation 
-
-                              GraphViewModel : The ViewModel of the Graph implementation
-
-                              MasterViewModel : The Master Component which runs all other ViewModels conglomerate
-                                                into, basically the entire application center onto this component.
-
-                              PanelView :  The View of the Panel , basically the visual implementation of all 
-                                           first layer components
+                             Backend| DataMaster.js           : A class to store and control Data Instances  
                              
-                              GraphWindow : The View of the  Graph , allows user to view all second "layer" 
-                                            components. 
+                             Backend| AnomalyDetector.js      : A class which it's instances hold information about a given anomaly  
+                             
+                             Backend| anomalyDetectionUtil.js : Holds certain  useful mathematical functions in the realm of statisitcs 
+                                                                which we use to do certain calculations
+                             _________________________________________________________________________________________________________
+                             
+                             src       | App.js          :   Our main vertice onto which we push all other subcomponents into for total functionality
+                                                             of app
+                             components| Anomalies.js    :   Displayes all Anomaly components 
+                             
+                             components| Anomaly.js      :   Displays all data about a given block of Anomaly Reports we received to the user 
+                             
+                             components| AddModel.js     :   Input component which allows user to create given model to be tested/trained on data 
+                                                             loaded before hand 
+                                                             
+                             components| Button.js       :   A Button component can be either Train/Test Button 
+                             
+                             components| clickModel.js   :   A Display to show given models that can be chosen to test data upon and see 
+                                                             whether their are Anomalies in the data itself
+                                                             
+                             components| DataTable.js    :   A DataTable to display data inputs from given attributes to the user 
+                             
+                             components| Dropdown.js     :   A component to display all given attributes we have that we can 
+                                                             display to user when he clicks on one of these attributes displayed 
+                                                             we display to him the data in a two dimensional graph where his 
+                                                             x axis is the given attribute we have clicked and the y axis are all other 
+                                                             attributes which fall in the graph
+                                                             
+                             components| DynamicChart.js :   A DynamicChart to display data to user 
+                             
+                             components| FileDrop.js     :   A component which allows user to drop in files 
+                             
+                             components| Model.js        :   A componet which displays to the user information on the given model  
+                             
+                             components| Models.js       :   A component which displays all models models in the system 
+                             
+                             components| SubMaster.js    :   A general logic component which helps control events in the platform 
+                                                             from a state of a user putting in a file until Model added to the system/ 
+                                                             Anomlaies pushed out  from testing a given model for user to see 
+                                                             
+                             components| TestDisplay.js  :   Displays to user all models we have currently trained data on and are ready to 
+                                                             receive test data. 
+                             
+                             
+                             
+                             
+
