@@ -135,7 +135,7 @@ const DataTable = ({dataColumns}) => {
       }
 
     return (
-        <div style={{width:1000 ,height: 363}} className = "DataTable">
+        <div style={{width:1000 ,height: 365}} className = "DataTable">
             <MaterialTable title="Data Report"  
               data ={getData()}
               columns ={getColumn()}/>

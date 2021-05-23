@@ -75,7 +75,7 @@ const  DynamicChart = ({displayGraphData}) => {
         height={400}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
-        <CartesianGrid />   
+        <CartesianGrid style={{color: "wheat"}}/>   
         <XAxis type="number" dataKey={"x"} name="" unit="" domain={findMinMax(displayGraphData)[0]}  />
         <YAxis type="number" dataKey={"y"} name="" unit=""  domain={findMinMax(displayGraphData)[1]}/>
         <ZAxis range={[50]} />

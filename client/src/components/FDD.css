@@ -4,8 +4,8 @@
 .FileDropContainer{
     border: 3px #414242 solid;
     position: absolute;
-    left: 70px;
-    top:110%;
+    left: 45%;
+    top:15%;
     width: 500px;
     height: 50px;
     cursor:pointer;
@@ -23,6 +23,7 @@
 
 .GraphContainer{
 
+   
     width:800px;
     height:400px;
 
@@ -33,7 +34,7 @@
 .DataTable{
     margin-top: auto;
     position: relative;
-    
+    color: #8e9478;
     left: 70px;
  
    
