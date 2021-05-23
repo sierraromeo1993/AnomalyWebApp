@@ -1,8 +1,6 @@
 
 import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
-import Button from   './Button'
-import TestDisplay from './TestDisplay'
 import './FDD.css';
 
 

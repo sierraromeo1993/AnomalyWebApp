@@ -1,11 +1,10 @@
 import React from 'react';
 import FileDrop from './FileDrop'
 import TestDisplay from './TestDisplay'
-import NameInput from './AddModel'
 import {useState, useEffect} from 'react'
 import Button from './Button'
 import AddModel from './AddModel';
-import Dropdown from './Dropdown';
+
 
 
 

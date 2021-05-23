@@ -1,5 +1,4 @@
 
-import Button from './Button'
 // Basic Input modal gets sent function which changes state of usestate at top 
 //
 import React from 'react';

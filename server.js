@@ -4,8 +4,6 @@ const fs = require("fs");
 const path = require("path");
 var simpleAD = require("./simpleAnomalyDetector");
 
-const MasterBackend = require("./BackEnd/MasterBackend");
-
 const app = express();
 app.use(express.json({ limit: "10mb", extended: true }));
 
