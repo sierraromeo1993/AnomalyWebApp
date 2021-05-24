@@ -55,7 +55,11 @@ function App() {
   useEffect( () => {
   
     parseByColumn(dataPoints);
+
     },[dataPoints]);
+  
+  
+
 
 
   /* To set for specific attribute to be displayed on graph as function of all other 
@@ -210,7 +214,7 @@ function App() {
   return (
     <div className="App">
       <Dropdown dataColumns={dataColumns} addGraphData={addGraphData}/>
-      <DynamicChart displayGraphData = {displayGraphData}/>   
+      <DynamicChart displayGraphData = {displayGraphData} dataColumns={dataColumns}/>   
       <DataTable dataColumns= {dataColumns}/>
       <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel} activateAnomalies ={activateAnomalies}/>
       {showAnomalies && <Anomalies anomalyReports = {anomalyReports}/>}

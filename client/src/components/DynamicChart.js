@@ -14,7 +14,7 @@ import {
 // and thats it who its checking for   
 // I need to also receive what are the names of the attributes 
 // plotting on x y axis  do this from Dropdown 
-const  DynamicChart = ({displayGraphData}) => {
+const  DynamicChart = ({displayGraphData,dataColumns}) => {
 
     
       
@@ -22,9 +22,12 @@ const  DynamicChart = ({displayGraphData}) => {
     const [data,setdata] = useState([]);
     const [showData,setShowData] = useState(false);
 
+
+    
+
     useEffect( () => {
 
-        //console.log(displayGraphData);
+        
         },[displayGraphData]);
 
     const dataToShow = (graphData) => {
@@ -43,6 +46,10 @@ const  DynamicChart = ({displayGraphData}) => {
           return Multiple
 
     }
+
+
+   
+    
 
     const findMinMax = (graphData) => {
        var minX = 0;
@@ -81,9 +88,9 @@ const  DynamicChart = ({displayGraphData}) => {
         <ZAxis range={[50]} />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
         <Legend />
-         <Scatter  name="Altitute" data={dataToShow(displayGraphData[0])} fill="blue" line shape="circle" />
-         <Scatter  name="Speed" data={dataToShow(displayGraphData[1])} fill="purple" line shape="circle" />
-         <Scatter  name="Altitute" data={dataToShow(displayGraphData[2])} fill="orange" line shape="circle" />
+         <Scatter  name="Attribute I" data={dataToShow(displayGraphData[0])} fill="blue" line shape="circle" />
+         <Scatter  name="Attribute II" data={dataToShow(displayGraphData[1])} fill="purple" line shape="circle" />
+         <Scatter  name="Attribute III" data={dataToShow(displayGraphData[2])} fill="orange" line shape="circle" />
       </ScatterChart>
     </div>
         

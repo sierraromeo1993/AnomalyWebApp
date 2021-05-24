@@ -4,6 +4,7 @@
 .FileDropContainer{
     border: 3px #414242 solid;
     position: absolute;
+    display :block;
     left: 45%;
     top:15%;
     width: 500px;
