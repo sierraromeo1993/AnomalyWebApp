@@ -28,11 +28,17 @@ import './FDD.css';
     //     which still needs to be created in APP 
 
 
-function FileDrop({addFile,showB}) {
+function FileDrop({addFile,showB,closeA,showTD,activeButton}) {
 
-    const handleOnDrop = (acceptedFiles) => {     
+    const handleOnDrop = (acceptedFiles) => {  
+        
+       
         addFile(acceptedFiles);
         showB(true);
+        closeA();
+        //if(activeButton === "Test"){showTD(true)};
+        //if(activeButton === "Train"){showTD(false)};
+    
     }
 
     return (

@@ -68,6 +68,13 @@ function App() {
   const addGraphData = (graphData) => {
       setDisplayGraphData(graphData)
   }
+
+
+  const closeA =  () =>{
+    console.log("closeA")
+    setShowAnomalies(false);
+
+  }
   
  
 
@@ -216,7 +223,7 @@ function App() {
       <Dropdown dataColumns={dataColumns} addGraphData={addGraphData}/>
       <DynamicChart displayGraphData = {displayGraphData} dataColumns={dataColumns}/>   
       <DataTable dataColumns= {dataColumns}/>
-      <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel} activateAnomalies ={activateAnomalies}/>
+      <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel} activateAnomalies ={activateAnomalies} closeA={closeA}/>
       {showAnomalies && <Anomalies anomalyReports = {anomalyReports}/>}
     </div>
   );

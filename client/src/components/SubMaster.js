@@ -22,7 +22,7 @@ import './FDD.css';
 // APP LEVEL OPERATION ( ADDMODEL, ADDFILETOSTATE )
 //activateAnomalies ={activateAnomalies}
 
-function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
+function SubMaster({models,addModel,addFile,testModel, activateAnomalies,closeA}) {
 
 
     
@@ -55,10 +55,10 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
         <div className="SubMaster">
           <Models models={models}/>
           {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
-          {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
-          {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
+          {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
+          {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
           {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD} activateAnomalies ={activateAnomalies}  />}
-          <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} />   
+          <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} closeA={closeA} showTD={showTD} activeButton={activeButton}/> 
         </div>
     );
 }

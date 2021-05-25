@@ -6,11 +6,13 @@ import React from 'react';
 // to test all our requests to the server 
 
 
-const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton,name}) => {
+const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton,name,showTD,showAD}) => {
     // create object 
     const onClick = (e) => {
         console.log(type);   
         setActiveButton(type);
+        if(type === 'Train'){showTD(false);showAD(true)};
+        if(type === 'Test'){showAD(false);showTD(true)};
         
        
 
