@@ -6,7 +6,7 @@ import React from 'react';
 // to test all our requests to the server 
 
 
-const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton}) => {
+const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton,name}) => {
     // create object 
     const onClick = (e) => {
         console.log(type);   
@@ -20,7 +20,7 @@ const Button = ({text,onAdd,onDelete,onGet,type,setActiveButton,activeButton}) =
     
     return (
         <div>
-         <button className='button' onClick={onClick}>{text}</button>
+         <button className={name} onClick={onClick}>{text}</button>
 
         </div> 
     );

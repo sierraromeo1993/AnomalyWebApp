@@ -53,11 +53,23 @@
 }
 
 
-.button{
+
+
+
+.TrainButton{
+    margin:auto;
     position: absolute;
     display :block;
     left: 20%;
-    top:30%;
+    top:320px;
+}
+
+.TestButton{
+    margin:auto;
+    position: absolute;
+    display :block;
+    left: 25%;
+    top:320px;
 
 }
 

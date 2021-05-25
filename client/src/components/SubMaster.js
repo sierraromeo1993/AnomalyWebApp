@@ -55,8 +55,8 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
         <div className="SubMaster">
           
           {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
-          {showButtons &&<Button text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
-          {showButtons &&<Button text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
+          {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
+          {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
           {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD} activateAnomalies ={activateAnomalies}  />}
           <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} />   
         </div>
