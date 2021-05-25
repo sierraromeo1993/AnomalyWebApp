@@ -86,8 +86,17 @@
     margin:auto;
     position: absolute;
     display :block;
-    left: 40%;
+    left: 45%;
     top:320px;
+}
+
+
+.ModelList{
+    margin:auto;
+    position: absolute;
+    display :block;
+    left: 35%;
+    top:300px;
 }
 
 

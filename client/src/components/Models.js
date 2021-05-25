@@ -6,10 +6,10 @@ import Model from './Model'
 const Models = ({models}) => {
 
     return (
-        <>
+        <div className="ModelList">
             {models.map((model,index)=>
                 <Model key={index} model= {model} />)}              
-        </>
+        </div>
     );
 };
 

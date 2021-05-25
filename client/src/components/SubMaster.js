@@ -53,7 +53,7 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
           
     return (
         <div className="SubMaster">
-          
+          <Models models={models}/>
           {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
           {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
           {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
