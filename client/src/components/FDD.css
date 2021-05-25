@@ -74,6 +74,29 @@
 }
 
 
+.TestModelContainer{
+    margin:auto;
+    position: absolute;
+    display :block;
+    left: 60%;
+    top:320px;
+}
+
+.add-form{
+    margin:auto;
+    position: absolute;
+    display :block;
+    left: 40%;
+    top:320px;
+}
+
+
+
+
+
+
+
+
 
 
 
