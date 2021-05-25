@@ -4,15 +4,15 @@
 
 
 .App {
+  display: block;
   text-align: center;
   position: relative;
   min-width:100% ;
   min-height:100%;
   background-size: cover;
   background-position: center;
-  
-  
-  
+  overflow-x: hidden;
+   
 }
 
 .App-logo {

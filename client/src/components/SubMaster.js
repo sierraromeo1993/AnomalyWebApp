@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react'
 import Button from './Button'
 import AddModel from './AddModel';
 import Models from './Models'
+import './FDD.css';
 
 
 
@@ -52,7 +53,7 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies }) {
           
     return (
         <div className="SubMaster">
-          <Models models={models}/>
+          
           {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
           {showButtons &&<Button text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
           {showButtons &&<Button text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton}/>}
