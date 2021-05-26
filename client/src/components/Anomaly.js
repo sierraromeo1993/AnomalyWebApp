@@ -1,5 +1,8 @@
 import React from "react";
 
+
+
+/* A Component which Infromation on each conglomerated Anomaly Report */
 const Anomaly = ({ anomalyReport }) => {
   return (
     <div className="Anomaly">

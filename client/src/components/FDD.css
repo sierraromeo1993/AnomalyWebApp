@@ -37,6 +37,7 @@
     position: relative;
     color: #8e9478;
     left: 70px;
+    z-index: 100;
  
    
 
@@ -60,8 +61,20 @@
     margin:auto;
     position: absolute;
     display :block;
-    left: 20%;
+    left: 18%;
     top:320px;
+    background-color: #1e201e; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
 
 .TestButton{
@@ -70,11 +83,29 @@
     display :block;
     left: 25%;
     top:320px;
+    margin:auto;
+    position: absolute;
+    display :block;
+   
+    
+    background-color: #1e201e; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 
 }
 
 
 .TestModelContainer{
+    border: 3px #414242 solid;
     margin:auto;
     position: absolute;
     display :block;
@@ -83,11 +114,17 @@
 }
 
 .add-form{
+    
     margin:auto;
     position: absolute;
     display :block;
     left: 45%;
     top:320px;
+    font-family: Tahoma, sans-serif;
+    font-size: medium;
+    font-style:italic;
+    
+
 }
 
 
@@ -97,7 +134,83 @@
     display :block;
     left: 35%;
     top:300px;
+    
 }
+
+.Model{
+    margin:1px; 
+    position:relative;
+    display: block;
+    font-family: Tahoma, sans-serif;
+    font-size: medium;
+    font-style:italic;
+    border: 3px #414242 solid;
+
+}
+
+.SaveButton{
+    margin : 30px;
+    background-color: #1e201e; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+
+
+.ModelName{
+    background-color: #ffffff; /* Green */
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+
+.ModelType{
+    background-color: #ffffff; /* Green */
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+
+.AnomalyList{
+    display: block;
+    font-family: Tahoma, sans-serif;
+    font-size: medium;
+    font-style:italic;
+    
+
+
+}
+
+
+
+
 
 
 

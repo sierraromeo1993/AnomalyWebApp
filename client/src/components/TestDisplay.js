@@ -3,12 +3,10 @@
 import React from 'react';
 import ClickModel from './clickModel';
 
-// create another componet called clickModel instead of inner div
-//  which holds model and allows us to add functionality 
-// for given model creeat OnClick function inside of value 
 
 
 
+/* A Component which displays all Models currently trained in the system */
 const TestDisplay = ({models,testModel,showTD,activateAnomalies}) => {
     return (
         <div className ="TestModelContainer" >

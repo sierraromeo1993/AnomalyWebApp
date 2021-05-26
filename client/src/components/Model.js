@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-
+/* A Component which shows information for Model */
 const Model = ({model}) => {
     return (
         <div  className ="Model">

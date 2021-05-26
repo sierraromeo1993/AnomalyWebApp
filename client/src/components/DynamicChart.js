@@ -10,18 +10,15 @@ import {
     Legend
   } from "recharts";
 
-// in order to write name also send from dropdown name of button clicked 
-// and thats it who its checking for   
-// I need to also receive what are the names of the attributes 
-// plotting on x y axis  do this from Dropdown 
-const  DynamicChart = ({displayGraphData,dataColumns}) => {
+/* A Component which dynamically shows data from attribute clicked on 
+to be displayed as a chart */
+
+const  DynamicChart = ({displayGraphData}) => {
 
     
       
-    // use spreadOperator and update accordingly 
-    const [data,setdata] = useState([]);
-    const [showData,setShowData] = useState(false);
-
+  
+  
 
     
 

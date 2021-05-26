@@ -3,7 +3,10 @@ import React, {useState,useEffect} from 'react';
 import './Dropdown.css';
 
 
-
+/* A Component which is a dropdown component we have a number of other components in the
+specific file in short they create a dropdown menu containing all attributes loaded from the 
+file when someone clicks on one of these attributes 
+he then can see it as function of a graph  */
 function Dropdown({dataColumns,addGraphData}) {
 
     const [showChartButton,setShowChartButton] = useState(false);

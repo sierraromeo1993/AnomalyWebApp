@@ -3,32 +3,16 @@ import React, { useEffect,useState } from 'react';
 import MaterialTable from 'material-table'
 
 
-// this is an app state component 
-// you will pushing into it DataColumns 
-// and you will be doing the following 
-// 1. prepping the data to be served in an easy manner 
-//  to the data table component 
-// 1.1 turn into simialr data strucuture of size two what did before 1:1  first function
-// 1.2 create same data structure but where we cut down on amount of data points factor of 10
-       // modulo 100 on each does the trick  done
-// 1.3 create array which for the length of one of the shortened array creates 
-// 1.4  a column_name array in the following format i = 1 {`${i*100} TimeStep`} ;i++ 
-// 1.5 from this column name array and the first value of the original data structure 
-//     you will create data objects formateed for material table (see video tutorial) 
-//   
- 
-// 2. take ready data and dyanmically serve it to the Material table 
-//    component 
+
+
+/* A Component which preps and shows data as a DataTable to the user */
 const DataTable = ({dataColumns}) => {
 
     const [dataARRColumns,setDataARRColumns] = useState([]);
     const [dataTableObjects,setDataTableObjects] = useState([]);
     const [columnTableObjects,setcolumnTableObjects] = useState([]);
    
-     
-    // so dataTableObjects will be used for our data in Material-Table
-    // I'll need to first update it in useEffect of dataARRcoulumns 
-    //
+  
     
     const getData = () => {
         const c  = dataTableObjects;
@@ -97,7 +81,7 @@ const DataTable = ({dataColumns}) => {
         setDataTableObjects(dataTableArr);
     },[dataARRColumns])
 
-///
+
     useEffect( () => {
         if(Object.keys(dataColumns).length === 0){return;}  
         readyData(dataColumns);

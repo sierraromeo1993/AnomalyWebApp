@@ -143,7 +143,7 @@ function App() {
    /* Gets Model from Backend returns promise which can picked up by function and 
       unraveled */ 
   const getModel = async (id) => {
-    const res = await fetch(`/api/models/${4}`);
+    const res = await fetch(`/api/models/${id}`);
     const data = await res.json();
     return data;
   }
@@ -177,13 +177,9 @@ function App() {
   }
   
 
-  /* To implement ; deletes file in the Backend */ 
-  const delFile = (file) => {
+ 
 
-
-  }
-
-   /* To Implement; checks whether in the Backend the model is ready and if so will update 
+   /* checks whether in the Backend the model is ready and if so will update 
       the FrontEnd state accordingly  */ 
   const checkActiveModel = async (model) => {
     const res =  await fetch(`/api/models/status/${model.id}`);
@@ -205,8 +201,7 @@ function App() {
       const res =  await fetch('/api/models/update',options);
       const data = await res.json();
       return data
-       /* Here you would have used sendFile()  to send this file to the Backend*/ 
-      /*sendFile()*/
+     
   }
 
 

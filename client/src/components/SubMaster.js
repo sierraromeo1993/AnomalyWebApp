@@ -12,23 +12,13 @@ import "./SubMaster.css";
 
 
 
-
-
-// Holds all components which  deal in the following actions 
-
-// 1: FileDrop
-// 2: Button
-// 3: TestDisplay check on UI show and basic func need to create all functions 
-//    to be drilled inside for APP STATE/ SUBMaster can talk with him  
-// receive as prop; models , any functions dealing with actions associated with 
-// APP LEVEL OPERATION ( ADDMODEL, ADDFILETOSTATE )
-//activateAnomalies ={activateAnomalies}
-
+/* A Component which acts as a holder and controller  of all other components asscociated with user input 
+of event change through putting in file till any event associated with that file barring 
+events asscociated wit data table or dynamic graph  */
 function SubMaster({models,addModel,addFile,testModel, activateAnomalies,closeA}) {
 
 
-    
-    // could also maybe be empty 
+ 
     const [activeButton,setButton] = useState("");
     
     const [showTestDisplay,setShowTestDisplay] = useState(false);
@@ -42,8 +32,8 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies,closeA}
     const setActiveButton = (string) => {setButton(string);console.log(string) }
      
 
-    const showTD = (flag) => {setShowTestDisplay(flag)}
-    const showAD = (flag) => {setShowAddModel(flag)}
+    const showTD = (flag) => {setShowTestDisplay(flag);showB(false)}
+    const showAD = (flag) => {setShowAddModel(flag);showB(false)}
     const showB  =  (flag) => {setShowButtons(flag)}
 
     useEffect(() => {

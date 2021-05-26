@@ -6,7 +6,7 @@ import {useState} from 'react';
 
 
 
-
+/* A Input Component which allows user to enter new models to be used   */
 const  AddModel = ({addModel,showAD}) => {
 
     const [modelName,setModelName] = useState('');
@@ -42,13 +42,13 @@ const  AddModel = ({addModel,showAD}) => {
             <form className='add-form' onSubmit = {onSubmit}>
               <div className='form-control'>   
                  <label>Model Name</label>
-                 <input type='text' placeholder='Add Model Name' value={modelName} onChange={onChangeName}/>
+                 <input className="ModelName" type='text' placeholder='Add Model Name' value={modelName} onChange={onChangeName}/>
               </div>
               <div className='form-control'>
                  <label>Model Type</label>
-                 <input type='text' placeholder='Add Model Type' value={modelType} onChange={onChangeType}/>  
+                 <input   className="ModelType" type='text' placeholder='Add Model Type' value={modelType} onChange={onChangeType}/>  
               </div>
-              <input type='submit' value='Save Model' />
+              <input className="SaveButton" type='submit' value='Save Model' />
             </form>
         
     );

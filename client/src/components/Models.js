@@ -1,8 +1,8 @@
 import React from 'react';
 import Model from './Model'
 
-// A simple display Component to show the given models we currently have 
 
+/* A Component which shows all Models currently in system */
 const Models = ({models}) => {
 
     return (
