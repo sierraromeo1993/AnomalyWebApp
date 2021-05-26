@@ -138,13 +138,17 @@
 }
 
 .Model{
-    margin:1px; 
+
+    display: flex;
+    padding: 10px;
     position:relative;
+    color:#ffffff;
     display: block;
     font-family: Tahoma, sans-serif;
-    font-size: medium;
-    font-style:italic;
-    border: 3px #414242 solid;
+    font-size:medium;
+    font-style:oblique;
+    background-color: #313131;
+    border-radius: 1%;
 
 }
 
