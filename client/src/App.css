@@ -41,6 +41,14 @@
   color: #61dafb;
 }
 
+.Anomlies {
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+  sans-serif;
+  position: absolute;
+  width: 50%;
+  top: 155%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

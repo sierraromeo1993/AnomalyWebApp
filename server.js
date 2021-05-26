@@ -101,7 +101,7 @@ app.post("/api/models/update", (req, res) => {
           objArr.push(continuousAnomaly);
         }
       }
-      console.log(objArr);
+      //console.log(objArr);
       res.json(objArr);
     }
   });

@@ -224,7 +224,9 @@ function App() {
       <DynamicChart displayGraphData = {displayGraphData} dataColumns={dataColumns}/>   
       <DataTable dataColumns= {dataColumns}/>
       <SubMaster models = {models} addModel = {addModel} addFile={addFile} testModel ={testModel} activateAnomalies ={activateAnomalies} closeA={closeA}/>
-      {showAnomalies && <Anomalies anomalyReports = {anomalyReports}/>}
+      <div className="Anomlies">
+        {showAnomalies && <Anomalies anomalyReports = {anomalyReports}/>}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,8 @@ import Button from './Button'
 import AddModel from './AddModel';
 import Models from './Models'
 import './FDD.css';
+import "./SubMaster.css";
+
 
 
 
@@ -53,11 +55,19 @@ function SubMaster({models,addModel,addFile,testModel, activateAnomalies,closeA}
           
     return (
         <div className="SubMaster">
-          <Models models={models}/>
-          {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
-          {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
-          {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
-          {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD} activateAnomalies ={activateAnomalies}  />}
+          <div className = "Models">
+            <Models models={models}/>
+          </div>
+          <div className="AddModel">
+            {showAddModel &&<AddModel addModel = {addModel} showAD = {showAD}/>}
+          </div>
+          <div className="Buttons">
+            {showButtons &&<Button name={'TrainButton'} text={'Train'} type={"Train"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
+            {showButtons &&<Button name={'TestButton'} text={'Test'} type={"Test"} setActiveButton={setActiveButton} activeButton={activeButton} showTD={showTD} showAD={showAD}/>}
+          </div>
+          <div className="TestDisplay">
+            {showTestDisplay &&<TestDisplay models = {models} testModel = {testModel} showTD = {showTD} activateAnomalies ={activateAnomalies}  />}
+          </div>
           <FileDrop activeButton = {activeButton} addFile={addFile} showB = {showB} closeA={closeA} showTD={showTD} activeButton={activeButton}/> 
         </div>
     );
