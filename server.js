@@ -4,11 +4,18 @@ const fs = require("fs");
 const path = require("path");
 const { mode } = require("simple-statistics");
 var simpleAD = require("./simpleAnomalyDetector");
-
 const app = express();
+
 app.use(express.json({ limit: "10mb", extended: true }));
 
 app.use(fileUpload());
+
+app.use(express.static(path.join(__dirname,'build')));
+
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname,'build','index.html'));
+  
+})
 
 var models = [
  
@@ -47,7 +54,6 @@ const port = 8080;
 
 /* gets ID from front end and based on that */
 app.delete("/api/models/delete/:id", (req, res) => {
-  //console.log(req.params.id);
   const tmp = models.filter((model) => model.id != req.params.id);
   models = tmp;
 });
