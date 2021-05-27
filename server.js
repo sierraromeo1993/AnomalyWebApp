@@ -2,6 +2,7 @@ const express = require("express");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const path = require("path");
+const { mode } = require("simple-statistics");
 var simpleAD = require("./simpleAnomalyDetector");
 
 const app = express();
@@ -46,7 +47,7 @@ const port = 8080;
 
 /* gets ID from front end and based on that */
 app.delete("/api/models/delete/:id", (req, res) => {
-  console.log(req.params.id);
+  //console.log(req.params.id);
   const tmp = models.filter((model) => model.id != req.params.id);
   models = tmp;
 });
@@ -76,7 +77,7 @@ app.post("/api/models/update", (req, res) => {
   var objArr = [];
   models.forEach((model) => {
     if (model.id == req.body.id) {
-      var ar = simpleAD.detect(req.body.predict_data, model.cf, "Linear");
+      var ar = simpleAD.detect(req.body.predict_data, model.cf, model.type);
       var ca = simpleAD.initialContinuousAnomalies(ar);
       for (const anomalyArr of Object.entries(ca)) {
         for (const continuousAnomaly of anomalyArr[1]) {

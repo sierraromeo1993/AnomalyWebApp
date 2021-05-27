@@ -2,35 +2,57 @@ const util = require("./anomalyDetectionUtil");
 const enclosingCircle = require("smallest-enclosing-circle");
 var ss = require("simple-statistics");
 
+//correlated features struct
 class correlatedFeatures {
   constructor(f1Name, f2Name, f1Data, f2Data, corr, minCircle) {
+    //first feature name
     this.f1Name = f1Name;
+    //second feature name
     this.f2Name = f2Name;
+    //features corelation
     this.corr = corr;
+    //the linear regresiion line of the features
     this.linReg = util.linearRegByArr(f1Data, f2Data);
+    //thresold of calculation based on linear regression
     this.linearThreshold =
       findLinearThreshold(f1Data, f2Data, this.linReg) * 1.1;
+    //thresold of calculation based on min circle algoritem
     this.minCircleThreshold =
-      findMinCircleThreshold(f1Data, f2Data, minCircle) *1.1;
+      findMinCircleThreshold(f1Data, f2Data, minCircle) * 1.1;
+    //min circle represented by point and radius
     this.minCircle = minCircle;
   }
 }
 
+//anomaly report class
 class AnomalyReport {
   constructor(description, timestep) {
+    //features involved
     this.description = description;
+    //time step of the anomaly
     this.timestep = timestep;
   }
 }
 
 class continuousAnomaly {
   constructor(description, anomalyStart, anomalyEnd) {
-    this.description = description; // names of the correlated features
+    //features involved
+    this.description = description;
+    /*represent sequence anomlies.
+    * for EAMPLE:
+    * if we have the anomlies:
+    * A-C 183
+    * A-C 184
+    * A-C 185
+    * they convert to this format:
+    * A-C 183-185  
+    */
     this.anomalyStart = anomalyStart;
     this.anomalyEnd = anomalyEnd;
   }
 }
 
+//convert array of strings to numbers
 const turn_toNumbers = (dataObj) => {
   var dataDict = {};
   for (const [key, value] of Object.entries(dataObj)) {
@@ -39,8 +61,12 @@ const turn_toNumbers = (dataObj) => {
 }
 return dataDict;}
 
+/*
+ * train model with two algoritems:
+ * 1. linear regression line
+ * 2. min enclosing circle
+ */
 function learnNormal(dataObj) {
-
   
   var  dataDict =  turn_toNumbers(dataObj);
   correlativeFeaturesDict = {};
@@ -50,6 +76,7 @@ function learnNormal(dataObj) {
   
   let size = Object.keys(dataDict).length;
   
+  //for each feature find it most correlated featuer
   for (let i = 0; i < size; i++) {
     let max = 0;
     let jmax = 0;
@@ -71,6 +98,8 @@ function learnNormal(dataObj) {
     correlativeFeaturesDict[f1Name] = f2Name;
     points = [];
     util.convertArraysToPoints(dataDict[f1Name], dataDict[f2Name], points);
+    //calculate min enclosing circle and linear regression line of the correlated
+    //features
     learnHelper(
       max,
       f1Name,
@@ -85,6 +114,7 @@ function learnNormal(dataObj) {
   return mostCorrelatedFeatures;
 }
 
+//find thresold based on linear regression algoritem 
 function findLinearThreshold(x, y, regressionLine) {
   max = 0;
   l = ss.linearRegressionLine(regressionLine);
@@ -97,6 +127,7 @@ function findLinearThreshold(x, y, regressionLine) {
   return max;
 }
 
+//find thresold based on min enclosing circle algoritem 
 function findMinCircleThreshold(x, y, minCircle) {
   max = 0;
   p1 = new util.Point(minCircle.x, minCircle.y);
@@ -162,7 +193,7 @@ function detect(dataObj, cfArr, opt) {
             anomalyReports.push(new AnomalyReport(description, j + 1));
           }
         }
-      } else if (opt === "Non Linear") {
+      } else if (opt === "NonLinear") {
         if (c.corr > 0.5) {
           if (minCircleIsAnomalous(x[j], y[j], c)) {
             description = c.f1Name + "-" + c.f2Name;
@@ -176,30 +207,37 @@ function detect(dataObj, cfArr, opt) {
   return anomalyReports;
 }
 
+//check if there is anomaly in a specific time step
+//based on linear regression line
 function linearIsAnomalous(x, y, c) {
   l = ss.linearRegressionLine(c.linReg);
   return Math.abs(y - l(x)) > c.linearThreshold;
 }
 
+//check if there is anomaly in a specific time step
+//based on min enclosing circle algoritem
 function minCircleIsAnomalous(x, y, c) {
   p1 = new util.Point(x, y);
   p2 = new util.Point(c.minCircle.x, c.minCircle.y);
   d = pointDistance(p1, p2);
   return d > c.minCircleThreshold;
-  //return Math.abs(y - l(x)) > c.threshold;
 }
 
+//get distance between two points
 function pointDistance(p1, p2) {
   let distance = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
   return distance;
 }
 
+//add anomaly in the continous anomaly format
 function addContinuousAnomaly(des, start, end) {
   c = new continuousAnomaly(des, start, end);
   return c;
-  //anomalies.push(ca);
 }
 
+/*create continous anomalies based on the
+ *anomlies that found
+ */
 function initialContinuousAnomalies(anomalyReports) {
   continuousAnomalies = {};
   if (anomalyReports.length != 0) {
